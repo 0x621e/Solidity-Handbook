@@ -1,13 +1,5 @@
-# Sample Hardhat Project
+# Solidity 标准全解读手册
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract.
+OpenZepplin 标准库越来越成为开发者必不可少的参考工具之一，同时也是新手入门非常好的教材。
 
-Try running some of the following tasks:
-
-```shell
-npx hardhat help
-npx hardhat test
-GAS_REPORT=true npx hardhat test
-npx hardhat node
-npx hardhat run scripts/deploy.js
-```
+在后面的几个月我会将 OpenZepplin 中常用的 ERC-20、ERC-721 等合约进行详细解读，希望可以帮到新晋 WEB3 开发者。
