@@ -6,6 +6,9 @@ pragma solidity ^0.8.0;
 /**
  * @dev String operations.
  */
+/**
+ * @dev 基于String的转换。
+ */
 library Strings {
     bytes16 private constant _HEX_SYMBOLS = "0123456789abcdef";
     uint8 private constant _ADDRESS_LENGTH = 20;
@@ -13,8 +16,13 @@ library Strings {
     /**
      * @dev Converts a `uint256` to its ASCII `string` decimal representation.
      */
+    /**
+     * @dev 将 `uint256` 变换成为 ASCII `string`，比如 150 转换成为 `150`。
+     * ERC721 在 tokenURI() 函数中调用了 toString() 函数，将 baseURI 和指定的 tokenId 拼接到一起，返回 ERC721 metadata 的网址。
+     */
     function toString(uint256 value) internal pure returns (string memory) {
         // Inspired by OraclizeAPI's implementation - MIT licence
+        // 受 OraclizeAPI 启发 - MIT licence
         // https://github.com/oraclize/ethereum-api/blob/b42146b063c7d6ee1358846c198246239e9360e8/oraclizeAPI_0.4.25.sol
 
         if (value == 0) {
@@ -38,6 +46,9 @@ library Strings {
     /**
      * @dev Converts a `uint256` to its ASCII `string` hexadecimal representation.
      */
+    /**
+     * @dev 将 `uint256` 先变换成为 16 进制，再变换成为 `string`。
+     */
     function toHexString(uint256 value) internal pure returns (string memory) {
         if (value == 0) {
             return "0x00";
@@ -54,7 +65,14 @@ library Strings {
     /**
      * @dev Converts a `uint256` to its ASCII `string` hexadecimal representation with fixed length.
      */
-    function toHexString(uint256 value, uint256 length) internal pure returns (string memory) {
+    /**
+     * @dev 将 `uint256` 先变换成为 16 进制，再变换成为 `string`，取前 20 位。
+     */
+    function toHexString(uint256 value, uint256 length)
+        internal
+        pure
+        returns (string memory)
+    {
         bytes memory buffer = new bytes(2 * length + 2);
         buffer[0] = "0";
         buffer[1] = "x";
@@ -66,6 +84,9 @@ library Strings {
         return string(buffer);
     }
 
+    /**
+     * @dev Converts an `address` with fixed length of 20 bytes to its not checksummed ASCII `string` hexadecimal representation.
+     */
     /**
      * @dev Converts an `address` with fixed length of 20 bytes to its not checksummed ASCII `string` hexadecimal representation.
      */
