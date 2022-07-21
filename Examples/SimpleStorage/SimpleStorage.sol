@@ -1,10 +1,10 @@
 // SPDX-License-Identifier: MIT
-// 一个存储uint256 number和array people的简单合约 - John Wayne
+// 一个存储uint256 number和array people的简单合约
 pragma solidity 0.8.8;
 
 contract SimpleStorage {
     // 声明number和people，public关键词会自动生成getter函数，部署之后可以直接调用number和people的值
-    uint256 public number;
+    uint256 number;
     People[] public people;
 
     // name到number的映射，可以根据name查询number
@@ -21,8 +21,13 @@ contract SimpleStorage {
     // 关于函数可见性的关键词：public内部外部均可调用；external只能从外部调用，内部可使用this.f()调用
     // internal只能从内部调用，继承合约可以调用
     // private只能从内部调用，继承合约不可以调用
-    function storeNumber(uint256 _number) public {
+    // 因为ExtraStorage合约要改写storeNumber()函数，所以要加virtual关键词
+    function storeNumber(uint256 _number) public virtual {
         number = _number;
+    }
+
+    function retrieve() public view returns (uint256) {
+        return number;
     }
 
     // storagePeople函数赋值给结构体People，并添加到数组people中
