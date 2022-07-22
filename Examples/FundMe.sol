@@ -9,7 +9,7 @@ contract FundMe {
 
     // public任何人都可以调取，payable可以接受eth，激活msg.value和call.value
     function fund() public payable {
-        // require进行判断，如果条件不满足，require之后的代码不会执行，不扣gas；require之前的代码也会恢复初始条件，扣gas
+        // require判断函数，如果条件不满足，require之后的代码不会执行，不扣gas；require之前的代码也会恢复初始条件，扣gas
         require(msg.value > minimumUSD, "Didn't send enough!");
     }
 }
