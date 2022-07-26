@@ -1,10 +1,10 @@
 // SPDX-License-Identifier: MIT
-// 用户可以发送eth到FundMe，并设定发送eth最小额度，以美元计价
+// 用户可以发送eth到FundMe，最少100美元
 // 有提取功能withdraw
 
 pragma solidity 0.8.8;
 
-// 需要chainlink去中心化预言机提供eth实时价格
+// 需要chainlink去中心化预言机提供eth实时价格，将其功能打包进PriceConverter
 import "./PriceConverter.sol";
 
 contract FundMe {
@@ -22,7 +22,9 @@ contract FundMe {
             msg.value.getConvertionRate() >= minimumUSD,
             "Didn't send enough!"
         );
+        //将提供fund地址加进数组
         funders.push(msg.sender);
+        //地址到价值的映射
         addressToAmountFunded[msg.sender] = msg.value;
     }
 }
