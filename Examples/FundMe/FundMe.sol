@@ -27,4 +27,20 @@ contract FundMe {
         //地址到价值的映射
         addressToAmountFunded[msg.sender] = msg.value;
     }
+
+    // 将eth从合约中取出，重置捐款映射和数组
+    function withdraw() public {
+        // 将addressToAmount重制
+        for (
+            uint256 funderIndex = 0;
+            funderIndex < funders.length;
+            funderIndex++
+        ) {
+            address funder = funders[funderIndex];
+            addressToAmountFunded[funder] = 0;
+        }
+
+        // 将funders数组重制
+        funders = new address[](0);
+    }
 }
