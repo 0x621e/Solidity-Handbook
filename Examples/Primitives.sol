@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: SEE LICENSE IN LICENSE
-// 关于变量类型的一些例子
+// 数据类型
 pragma solidity ^0.8.13;
 
 contract Primitives {
